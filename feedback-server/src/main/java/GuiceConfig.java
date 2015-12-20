@@ -21,7 +21,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import kave.FeedbackService;
+import kave.IoUtils;
 import kave.ModelService;
+import kave.ModelService2;
+import kave.TestService;
 import kave.UniqueFileCreator;
 import kave.UploadCleanser;
 
@@ -80,15 +84,42 @@ public class GuiceConfig extends GuiceServletContextListener {
                 }
             }
 
-            @Provides
+          /*  @Provides
             public UploadCleanser provideUploadCleanser() {
                 return new UploadCleanser(tmpUfc);
             }
-
             @Provides
             public ModelService provideFeedbackService(UploadCleanser cleanser) throws IOException {
                 return new ModelService(dataDir, tmpDir, cleanser, tmpUfc, dataUfc);
+            }*/
+            
+            /*@Provides
+            public UploadCleanser provideUploadCleanser() {
+                return new UploadCleanser(tmpUfc);
+            }*/
+            @Provides
+            public IoUtils provideUploadCleanser() {
+                return new IoUtils(tmpUfc);
             }
+            @Provides
+            public TestService provideFeedbackService(IoUtils io) throws IOException {
+                return new TestService(dataDir, tmpDir,io, tmpUfc, dataUfc);
+            }
+            /*
+            @Provides
+            public IoUtils provideUploadCleanser() {
+                return new IoUtils(tmpUfc);
+            }
+            @Provides
+            public ModelService2 provideFeedbackService(IoUtils io) throws IOException {
+                return new ModelService2(dataDir, tmpDir, io, tmpUfc, dataUfc);
+            }*/
+             
+           /* 
+            * @Provides
+            public FeedbackService provideFeedbackService(UploadCleanser cleanser) throws IOException {
+                return new FeedbackService(dataDir, tmpDir, cleanser, tmpUfc, dataUfc);
+            }*/
         });
     }
 }

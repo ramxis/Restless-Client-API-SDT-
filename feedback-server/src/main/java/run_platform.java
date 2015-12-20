@@ -79,7 +79,7 @@ public class run_platform {
 
 		// === jetty-https.xml ===
 		// SSL Context Factory
-		SslContextFactory sslContextFactory = createSslContextFactory();
+		/*SslContextFactory sslContextFactory = createSslContextFactory();
 
 		// SSL HTTP Configuration
 		HttpConfiguration https_config = new HttpConfiguration(http_config);
@@ -102,8 +102,8 @@ public class run_platform {
 
 		// Start the server
 		server.start();
-		server.join();
-		/*server = new Server(8080);
+		server.join();*/
+		server = new Server(8080);
 
         WebAppContext webAppContext = new WebAppContext();
         webAppContext.setContextPath("/");
@@ -114,7 +114,7 @@ public class run_platform {
 
         server.setHandler(webAppContext);
         server.start();
-        server.join();*/
+        server.join();
 	}
 
 	private static SslContextFactory createSslContextFactory() {

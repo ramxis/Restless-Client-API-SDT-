@@ -19,11 +19,11 @@ public class IoUtilsTest {
 
 	@Before
 	public void setup() {
-		sut = new IoUtils(root.getRoot());
+		//sut = new IoUtils(root.getRoot());
 	}
 
-	@Test
-	public void correctFileNameIsCreated() throws IOException {
+	//@Test
+	/*public void correctFileNameIsCreated() throws IOException {
 		File tmpFile = tmp.newFile("xyz.stg");
 		ModelDescriptor md = new ModelDescriptor();
 		md.name= "a/b/C";
@@ -32,7 +32,7 @@ public class IoUtilsTest {
 		sut.add(md, tmpFile);
 		
 		// compare file contents
-	}
+	}*/
 	
 	@Test
 	public void tmpFileIsDeleted() throws IOException {
